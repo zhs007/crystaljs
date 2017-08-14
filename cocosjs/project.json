@@ -1,0 +1,30 @@
+{
+  "jsList" : [
+    "src/crystaljs/proto/fbs/flatbuffers.js",
+
+    "src/crystaljs/src/util.js",
+
+    "src/crystaljs/src/proto.js",
+    "src/crystaljs/src/cmd.js",
+    "src/crystaljs/src/msg.js",
+
+    "src/crystaljs/proto/cmddef.js",
+    "src/crystaljs/proto/msgdef.js",
+    "src/crystaljs/proto/fbs/base_generated.js",
+    "src/crystaljs/proto/fbs/basecmd.js",
+    "src/crystaljs/proto/fbs/basemsg.js",
+    "src/crystaljs/proto/fbs/msgcmdret.js",
+
+    "src/crystaljs/proto/cmddef.js",
+    "src/crystaljs/proto/msgdef.js",
+
+    "src/crystaljs/cmd/allcmd.js",
+
+    "src/crystaljs/msg/base/cmdret.js",
+    "src/crystaljs/msg/allmsg.js",
+
+    "src/crystaljs/src/cmdsendqueue.js",
+    "src/crystaljs/src/msgprocqueue.js",
+    "src/crystaljs/src/baseclient.js"
+  ]
+}
