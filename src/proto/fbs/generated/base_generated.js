@@ -64,7 +64,7 @@ Crystal.BaseCmd.prototype.ctrlid = function() {
  */
 Crystal.BaseCmd.prototype.buf = function(index) {
   var offset = this.bb.__offset(this.bb_pos, 8);
-  return offset ? this.bb.readInt8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
+  return offset ? this.bb.readUint8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
 };
 
 /**
@@ -76,11 +76,11 @@ Crystal.BaseCmd.prototype.bufLength = function() {
 };
 
 /**
- * @returns {Int8Array}
+ * @returns {Uint8Array}
  */
 Crystal.BaseCmd.prototype.bufArray = function() {
   var offset = this.bb.__offset(this.bb_pos, 8);
-  return offset ? new Int8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
+  return offset ? new Uint8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
 
 /**
@@ -202,7 +202,7 @@ Crystal.BaseMsg.prototype.ctrlid = function() {
  */
 Crystal.BaseMsg.prototype.buf = function(index) {
   var offset = this.bb.__offset(this.bb_pos, 8);
-  return offset ? this.bb.readInt8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
+  return offset ? this.bb.readUint8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
 };
 
 /**
@@ -214,11 +214,11 @@ Crystal.BaseMsg.prototype.bufLength = function() {
 };
 
 /**
- * @returns {Int8Array}
+ * @returns {Uint8Array}
  */
 Crystal.BaseMsg.prototype.bufArray = function() {
   var offset = this.bb.__offset(this.bb_pos, 8);
-  return offset ? new Int8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
+  return offset ? new Uint8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
 
 /**
@@ -356,7 +356,7 @@ Crystal.GatewayBaseCmd.prototype.ctrlid = function() {
  */
 Crystal.GatewayBaseCmd.prototype.buf = function(index) {
   var offset = this.bb.__offset(this.bb_pos, 12);
-  return offset ? this.bb.readInt8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
+  return offset ? this.bb.readUint8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
 };
 
 /**
@@ -368,11 +368,11 @@ Crystal.GatewayBaseCmd.prototype.bufLength = function() {
 };
 
 /**
- * @returns {Int8Array}
+ * @returns {Uint8Array}
  */
 Crystal.GatewayBaseCmd.prototype.bufArray = function() {
   var offset = this.bb.__offset(this.bb_pos, 12);
-  return offset ? new Int8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
+  return offset ? new Uint8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
 
 /**
@@ -518,7 +518,7 @@ Crystal.GatewayBaseMsg.prototype.msgid = function(optionalEncoding) {
  */
 Crystal.GatewayBaseMsg.prototype.buf = function(index) {
   var offset = this.bb.__offset(this.bb_pos, 10);
-  return offset ? this.bb.readInt8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
+  return offset ? this.bb.readUint8(this.bb.__vector(this.bb_pos + offset) + index) : 0;
 };
 
 /**
@@ -530,11 +530,11 @@ Crystal.GatewayBaseMsg.prototype.bufLength = function() {
 };
 
 /**
- * @returns {Int8Array}
+ * @returns {Uint8Array}
  */
 Crystal.GatewayBaseMsg.prototype.bufArray = function() {
   var offset = this.bb.__offset(this.bb_pos, 10);
-  return offset ? new Int8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
+  return offset ? new Uint8Array(this.bb.bytes().buffer, this.bb.bytes().byteOffset + this.bb.__vector(this.bb_pos + offset), this.bb.__vector_len(this.bb_pos + offset)) : null;
 };
 
 /**

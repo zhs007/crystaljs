@@ -6,9 +6,11 @@
 
 class Msg {
 
-    constructor(msgid, proto) {
+    // funcProc(client, basemsg)
+    constructor(msgid, proto, funcProc) {
         this.msgid = msgid;
         this.proto = proto;
+        this.funcProc = funcProc;
     }
 
     // buildMsg(obj) {

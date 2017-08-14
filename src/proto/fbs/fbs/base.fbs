@@ -3,13 +3,13 @@ namespace Crystal;
 table BaseCmd {
     cmdid:string;
     ctrlid:int;
-    buf:[byte];
+    buf:[ubyte];
 }
 
 table BaseMsg {
     msgid:string;
     ctrlid:int;
-    buf:[byte];
+    buf:[ubyte];
 }
 
 table GatewayBaseCmd {
@@ -17,14 +17,14 @@ table GatewayBaseCmd {
     clientid:int;
     cmdid:string;
     ctrlid:int;
-    buf:[byte];    
+    buf:[ubyte];    
 }
 
 table GatewayBaseMsg {
     gatewayid:short;
     clientid:int;
     msgid:string;
-    buf:[byte];    
+    buf:[ubyte];    
 }
 
 table CmdConnectServ {

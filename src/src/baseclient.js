@@ -8,8 +8,10 @@ const WebSocket = require('ws');
 const { log } = require('./logger');
 const { CmdSendQueue } = require('./cmdsendqueue');
 const { MsgProcQueue } = require('./msgprocqueue');
-const { ALLMSG } = require('../msg/allmsg');
-const { MSGID } = require('../proto/msgdef');
+const { Msg } = require('./msg');
+const { Cmd } = require('./cmd');
+// const { ALLMSG } = require('../msg/allmsg');
+const { MSGID, MSGPROTO } = require('../proto/fbs');
 
 class BaseClient {
 
@@ -31,7 +33,7 @@ class BaseClient {
         this.cmdSendQueue = new CmdSendQueue(this);
         this.msgProcQueue = new MsgProcQueue(this);
 
-        this.regMsg(new ALLMSG[MSGID.CMDRET]());
+        this.regMsgEx(MSGID.CMDRET, MSGPROTO, {});
 
         this.isAsyncProcMsg = isAsyncProcMsg;
     }
@@ -81,7 +83,8 @@ class BaseClient {
             return this.onMsg_CmdRet(basemsg);
         }
 
-        return basemsg.msg.onProcMsg(this, basemsg);
+        return basemsg.msg.funcProc(this, basemsg);
+        // return basemsg.msg.onProcMsg(this, basemsg);
     }
 
     onUndefinedMsg(basemsg) {
@@ -213,6 +216,14 @@ class BaseClient {
 
     regMsg(msg) {
         this.mapMsg[msg.msgid] = msg;
+    }
+
+    regCmdEx(cmdid, mapProto, mapProc) {
+        this.mapCmd[cmdid] = new Cmd(cmdid, new mapProto[cmdid](), mapProc[cmdid]);
+    }
+
+    regMsgEx(msgid, mapProto, mapProc) {
+        this.mapMsg[msgid] = new Msg(msgid, new mapProto[msgid](), mapProc[msgid]);
     }
 };
 

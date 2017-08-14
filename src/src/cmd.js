@@ -6,9 +6,11 @@
 
 class Cmd {
 
-    constructor(cmdid, proto) {
+    // funcProc(serv, ws, clientData, basecmd)
+    constructor(cmdid, proto, funcProc) {
         this.cmdid = cmdid;
         this.proto = proto;
+        this.funcProc = funcProc;
     }
 
     checkParam(ws, cmdobj) {
@@ -31,9 +33,9 @@ class Cmd {
     //     return this.proto.decode(buf);
     // }
 
-    async onProcCmd(serv, ws, clientData, basecmd) {
-        return false;
-    }
+    // async onProcCmd(serv, ws, clientData, basecmd) {
+    //     return false;
+    // }
 };
 
 exports.Cmd = Cmd;

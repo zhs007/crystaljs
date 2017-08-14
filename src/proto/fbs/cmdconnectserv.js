@@ -6,7 +6,7 @@
 
 const { Proto } = require('../../src/proto');
 const { flatbuffers } = require('./flatbuffers');
-const { Crystal } = require('./base_generated');
+const { Crystal } = require('./generated/base_generated');
 
 class Proto_CmdConnectServ extends Proto {
     constructor() {

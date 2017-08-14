@@ -4,7 +4,7 @@
 
 "use strict";
 
-const { fbs } = require('../proto/fbs/index');
+const fbs = require('../proto/fbs');
 
 const BASESTRCODE = 'abcdefghijklmnopqrstuvwxyz0123456789';
 

@@ -6,9 +6,12 @@
 
 const WebSocketServer = require('ws').Server;
 const { log } = require('./logger');
+const { Cmd } = require('./cmd');
+const { Msg } = require('./msg');
 const { CmdProcQueue } = require('./cmdprocqueue');
-const { ALLMSG } = require('../msg/allmsg');
-const { MSGID } = require('../proto/msgdef');
+// const { ALLMSG } = require('../msg/allmsg');
+const { MSGID, MSGPROTO } = require('../proto/fbs');
+// const { fbs } = require('../proto/fbs/index');
 
 class BaseServ {
 
@@ -22,7 +25,8 @@ class BaseServ {
         this.protoBaseCmd = protoBaseCmd;
         this.protoBaseMsg = protoBaseMsg;
 
-        this.regMsg(new ALLMSG[MSGID.CMDRET]());
+        this.regMsgEx(MSGID.CMDRET, MSGPROTO, {});
+        // this.regMsg(new ALLMSG[MSGID.CMDRET]());
     }
 
     async onInit() {
@@ -74,7 +78,8 @@ class BaseServ {
         }
 
         let clientData = await this.getClientData(ws);
-        return await basecmd.cmd.onProcCmd(this, ws, clientData, basecmd);
+        return await basecmd.cmd.funcProc(this, ws, clientData, basecmd);
+        // return await basecmd.cmd.onProcCmd(this, ws, clientData, basecmd);
 
         // return await this.onProcCmd(ws, cmd.cmdid, cmd.cmdobj);
     }
@@ -114,20 +119,29 @@ class BaseServ {
         return false;
     }
 
-    regCmd(cmd) {
-        this.mapCmd[cmd.cmdid] = cmd;
-    }
-
     sendBaseMsg(ws, basemsg) {
         ws.send(this.protoBaseMsg.encode(basemsg));
     }
 
     sendMsg(ws, msgid, ctrlid, buf) {
+        log('sendMsg ' + msgid + ' ' + JSON.stringify(buf));
         this.sendBaseMsg(ws, {msgid: msgid, ctrlid: ctrlid, buf: buf});
+    }
+
+    regCmd(cmd) {
+        this.mapCmd[cmd.cmdid] = cmd;
+    }
+
+    regCmdEx(cmdid, mapProto, mapProc) {
+        this.mapCmd[cmdid] = new Cmd(cmdid, new mapProto[cmdid](), mapProc[cmdid]);
     }
 
     regMsg(msg) {
         this.mapMsg[msg.msgid] = msg;
+    }
+
+    regMsgEx(msgid, mapProto, mapProc) {
+        this.mapMsg[msgid] = new Msg(msgid, new mapProto[msgid](), mapProc[msgid]);
     }
 
     parseCmd(buf) {

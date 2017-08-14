@@ -16,14 +16,14 @@ const { ClientIDMgr } = require('./src/clientidmgr');
 
 const { Proto } = require('./src/proto');
 
-const { fbs } = require('./proto/fbs/index');
+const fbs = require('./proto/fbs');
 
 const { CMDID } = require('./proto/cmddef');
 const { MSGID } = require('./proto/msgdef');
 
 const { RedisMgr } = require('./src/redismgr');
 
-const { Crystal } = require('./proto/fbs/base_generated');
+const { Crystal } = require('./proto/fbs/generated/base_generated');
 
 const { setCrystalCfg } = require('./src/config');
 const util = require('./src/util');
