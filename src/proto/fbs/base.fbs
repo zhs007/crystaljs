@@ -1,0 +1,39 @@
+namespace Crystal;
+
+table BaseCmd {
+    cmdid:string;
+    ctrlid:int;
+    buf:[byte];
+}
+
+table BaseMsg {
+    msgid:string;
+    ctrlid:int;
+    buf:[byte];
+}
+
+table GatewayBaseCmd {
+    gatewayid:short;
+    clientid:int;
+    cmdid:string;
+    ctrlid:int;
+    buf:[byte];    
+}
+
+table GatewayBaseMsg {
+    gatewayid:short;
+    clientid:int;
+    msgid:string;
+    buf:[byte];    
+}
+
+table CmdConnectServ {
+    servkey:string;
+}
+
+table MsgCmdRet {
+    cmdid:string;
+    isok:bool;
+}
+
+// root_type BaseCmd;
